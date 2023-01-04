@@ -15,4 +15,14 @@
     }
 
 
+    .modal-card{
+        width: 80%;
+
+    }
+
+    .bar i{
+        font-size: 3vh !important;
+    }
+
+
 }

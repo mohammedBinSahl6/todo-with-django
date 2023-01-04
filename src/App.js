@@ -22,6 +22,7 @@ const EmptyTaskAlert =()=>{
 
 function App() {
   const[added, setAdded] =useState(false)
+  const [isEmpty, setIsEmpty]=useState(false)
   const[todos, setTodos] = useState([])
   
   useEffect(()=>{
@@ -36,18 +37,24 @@ function App() {
   const add = (e)=> {
     e.preventDefault()
    
+   if(isEmpty){
+    setAdded(false)
+   }
+   else{
     setAdded(true)
+   }
   
   }
   const reset = ()=> setAdded(false)
  return(
   <div>
     {added? <AddedAlert />:null}
+  
   <div className='row p-5'>
     <h1 className='text-center head text-white'>Todo App</h1>
   </div>
 
-  <div className='container p-3 mt-5'>
+  <div className='container-fluid p-3 mt-5'>
     <TodoForm add={add} reset={reset} />
   </div>
 

@@ -55,7 +55,7 @@ export default function TodoList({todos ,setTodos}){
    }
    
     return (
-       <div className="todoList p-5">
+       <div className="todoList container-fluid p-5">
             <ul className="list-group">
 
                 <p>Tasks : {todos.length}</p>
@@ -92,7 +92,7 @@ export default function TodoList({todos ,setTodos}){
                     
                 ))}
                  <li className="list-group-item">
-                  dodo
+                  dodo on the click keep helping the people
                   <span className="bar">
                   <i className="bi bi-check2-circle" ></i>
                   <i className="bi bi-pencil-square" onClick={()=>setShow(true)} ></i>
