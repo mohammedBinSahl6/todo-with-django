@@ -3,7 +3,7 @@ import './mobile.css'
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+
 
 const AddedAlert =()=>{
   return(
@@ -12,37 +12,29 @@ const AddedAlert =()=>{
     </div>
   )
 }
-const EmptyTaskAlert =()=>{
-  return(
-    <div className='alert alert-danger'>
-      <p>Empty Task ! Write somthing</p>
-    </div>
-  )
-}
+
 
 function App() {
   const[added, setAdded] =useState(false)
-  const [isEmpty, setIsEmpty]=useState(false)
+
   const[todos, setTodos] = useState([])
   
   useEffect(()=>{
-    axios.get('/api/todos/')
-    .then(res=>{
-      setTodos(res.data)
-    }).catch(()=>{
-      alert('somthing wrong in get todos')
-    })
+   fetch('http://192.168.1.7:8000/todos')
+   .then(res=>{
+    return res.json()
+   })
+   .then(data=>{
+    console.log(data)
+    setTodos(data)
+ 
+   })
   },[])
   
   const add = (e)=> {
     e.preventDefault()
    
-   if(isEmpty){
-    setAdded(false)
-   }
-   else{
-    setAdded(true)
-   }
+  setAdded(true)
   
   }
   const reset = ()=> setAdded(false)
@@ -55,7 +47,7 @@ function App() {
   </div>
 
   <div className='container-fluid p-3 mt-5'>
-    <TodoForm add={add} reset={reset} />
+    <TodoForm add={add} reset={reset} setTodos={setTodos} todos={todos} />
   </div>
 
   <div className='todo-list-holder container-fluid p-3'>
@@ -63,7 +55,7 @@ function App() {
 
 
     <div className='tasks'>
-      <TodoList todos={todos} setTodos={setTodos} />
+     {todos &&  <TodoList todos={todos} setTodos={setTodos} />}
     </div>
   </div>
 </div>
