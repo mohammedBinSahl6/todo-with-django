@@ -1,38 +1,85 @@
-.App {
-  text-align: center;
+:root{
+  --c : #412234;
+  --c2 : #6D466B;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+body{
+  background-color: #412234;
+  overflow-x: hidden !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.todo-form{
+  width: 100%;
+  background-color: #6D466B;
+  color: white;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.add-btn{
+  background-color: #412234;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.bar{
+  display: flex;
+  float: right;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.bar i{
+  font-size: 4vh;
+  color: #412234;
+  padding: 0 1em !important;
+  cursor: pointer;
+}
+.bar i:hover{
+  color: var(--c2);
+}
+
+.todo-list-holder{
+  color : var(--c2)
+}
+
+.alert-success{
+  position: absolute;
+  top: 1%;
+  left: 25%;
+  animation: alerting 1s linear;
+  transform: translateY(-100%) 2s;
+}
+
+@keyframes alerting{
+  50%{
+    transform: translateY(100%);
+  
   }
-  to {
-    transform: rotate(360deg);
-  }
+ 
+}
+
+.upModal{
+  position: fixed;
+  top: 0;
+  width: 100vw !important;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:rgba(0, 0, 0, 0.678);
+  z-index: 999;
+}
+
+.modal-card{
+  width: 40%;
+  height: fit-content;
+  background-color: white;
+}
+.e-title{
+  color: #6D466B;
+}
+.close-btn{
+  background-color: white;
+  color: #412234;
+}
+
+.completed{
+  color: #6D466B;
+  text-decoration: line-through;
 }
